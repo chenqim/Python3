@@ -112,8 +112,3 @@ del(dict)
 print(dict([('Runoob', 1), ('Google', 2), ('Taobao', 3)]))
 print({x: x**2 for x in (2, 4, 6)})
 print(dict(Runoob=1, Google=2, Taobao=3))
-
-
-
-
-
