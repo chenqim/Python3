@@ -1,5 +1,5 @@
 '''
-参考博客：http://www.cnblogs.com/coltfoal/archive/2012/10/06/2713348.html
+爬取简单的城市加温度数据
 '''
 
 # coding : UTF-8
@@ -46,5 +46,5 @@ if __name__ == '__main__':
     html = get_html(url)
     # print(html)
     weather = str(get_weather(html))
-    print(writetxt('tianqi2.txt', weather, 'utf-8'))
+    print(writetxt('weather.txt', weather, 'utf-8'))
     print(weather)
