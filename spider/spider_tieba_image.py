@@ -13,9 +13,10 @@ def get_html(url):
     html = response.read()
     return html
 
-def get_image(html):
+def get_image(html, page):
     # 利用正则表达式匹配网页内容找到图片地址
-    reg = r'src="(https://img.*?\.jpg)" size'
+    # reg = r'src="(https://img.*?\.jpg)" size'
+    reg = r'src="(https://img.*?\.jpg)" pic_ext'
     pattern = re.compile(reg)
     # repr用来转换表达式类型字符串
     image_url_list = re.findall(pattern, repr(html))
@@ -32,13 +33,17 @@ def get_image(html):
         print('正在下载第%s张图片'%num)
         print(image_url)
         # 下载图片到本地
-        with open('C:/users/xm/desktop/python/spider/img/%s.jpg' %num, 'wb') as fp:
+        with open('C:/users/xm/desktop/python/spider/img/' + str(page) + '-%s.jpg' %num, 'wb') as fp:
             fp.write(image)
             num += 1
     return
 
 if __name__ == '__main__':
-    url = 'https://tieba.baidu.com/p/5252908812'
-    html = get_html(url)
-    get_image(html)
+    # 新增分页功能
+    for page in range(5):
+        page += 1
+        # url = 'https://tieba.baidu.com/p/5252908812?pn=' + str(page)
+        url = 'https://tieba.baidu.com/p/3205263090?pn=' + str(page)
+        html = get_html(url)
+        get_image(html, page)
     print('Download complete!')
